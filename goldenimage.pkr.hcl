@@ -1,3 +1,16 @@
+variable "ami_prefix" {
+  type = pkr
+}
+
+data "amazon-ami" "aws-default-image" {
+  filters = {
+    name                = "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"
+    root-device-type    = "ebs"
+    virtualization-type = "hvm"
+  }
+  most_recent = true
+}
+
 build {
   name = "packer-golden"
   sources = [
@@ -22,7 +35,7 @@ build {
 source "amazon-ebs" "packer-builder" {
   ami_name      = "${var.ami_prefix}-${local.timestamp}"
   instance_type = "t2.micro"
-  source_ami    = data.hcp-packer-image.golden_base_east.id
+  source_ami    = data.amazon-ami.aws-default-image.id
   ssh_username = "ubuntu"
   tags = {
     Name          = "packer-builder"
