@@ -12,8 +12,6 @@ data "aws_availability_zones" "available" { state = "available" }
 data "aws_region" "current" {}
 
 resource "aws_default_vpc" "default" {
-  cidr_block       = "172.17.17.0/24"
-  instance_tenancy = "default"
   force_destroy = true
   tags = {
     Name = "VPC for packer"
