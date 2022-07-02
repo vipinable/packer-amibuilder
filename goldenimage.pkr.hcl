@@ -19,11 +19,6 @@ build {
     "source.amazon-ebs.packer-builder"
   ]
 
-  # Add SSH public key
-  provisioner "file" {
-    source      = "../packer.pub"
-    destination = "/tmp/learn-packer.pub"
-  }
 
   # Execute setup script
   provisioner "shell" {
