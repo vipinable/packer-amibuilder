@@ -5,11 +5,12 @@ variable "ami_prefix" {
 
 data "amazon-ami" "aws-default-image" {
   filters = {
-    name                = "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"
+    name                = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
     root-device-type    = "ebs"
     virtualization-type = "hvm"
   }
   most_recent = true
+  owners      = ["099720109477"]
 }
 
 build {
