@@ -24,10 +24,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
+l
+      - name: Setup the build tools 
         run: |
            curl -L https://releases.hashicorp.com/packer/1.8.2/packer_1.8.2_windows_amd64.zip -o packer.zip
            unzip packer.zip
-           packer --version
+           echo "packer version - $(packer --version)"
