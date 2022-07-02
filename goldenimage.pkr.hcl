@@ -1,5 +1,6 @@
 variable "ami_prefix" {
-  type = pkr
+  type = string
+  default = pkr
 }
 
 data "amazon-ami" "aws-default-image" {
