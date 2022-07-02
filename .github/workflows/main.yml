@@ -27,4 +27,4 @@ jobs:
            unzip packer.zip
            echo "packer version - $(packer --version)"
       - name: Validate the config 
-        run: packer validate goldenimage.hcl
+        run: packer validate goldenimage.pkr.hcl
