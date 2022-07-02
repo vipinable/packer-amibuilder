@@ -7,22 +7,8 @@ terraform {
   }
 }
 
-data "aws_caller_identity" "current" {}
-data "aws_availability_zones" "available" { state = "available" }
-data "aws_region" "current" {}
-
-resource "aws_default_vpc" "default" {
-  force_destroy = true
-  tags = {
-    Name = "VPC for packer"
-  }
+module "vpc" {
+  source = "./module/vpc"
+  cidrs = "172.17.17.0/24"
 }
-
-resource "aws_default_subnet" "default_az1" {
-  availability_zone = data.aws_availability_zones.available.names[0]
-  force_destroy = true
-  depends_on = [ aws_default_vpc.default ]
-  tags = {
-    Name = "Subnet for packer"
-  }
-}
+  
