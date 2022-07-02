@@ -35,7 +35,7 @@ build {
 }
 
 source "amazon-ebs" "packer-builder" {
-  ami_name      = "${var.ami_prefix}
+  ami_name      = "${var.ami_prefix}"
   instance_type = "t2.micro"
   source_ami    = data.amazon-ami.aws-default-image.id
   ssh_username = "ubuntu"
