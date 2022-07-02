@@ -29,7 +29,7 @@ jobs:
         run: |
            curl -L https://releases.hashicorp.com/packer/1.8.2/packer_1.8.2_windows_amd64.zip -o packer.zip
            unzip packer.zip
-           curl -L https://releases.hashicorp.com/terraform/1.2.4/terraform_1.2.4_linux_amd64.zip 0 terraform.zip
+           curl -L https://releases.hashicorp.com/terraform/1.2.4/terraform_1.2.4_linux_amd64.zip -o terraform.zip
            unzip terraform.zip
            echo "packer version - $(packer --version)"
            echo "terraform version - $(terraform --version)"
