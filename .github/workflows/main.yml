@@ -34,6 +34,11 @@ jobs:
            echo "packer version - $(packer --version)"
            echo "terraform version - $(terraform --version)"
       - name: Create VPC for packer connectivity
-        run: terraform apply -auto-approve -input=false
-      - name: Create VPC for packer connectivity
+        run: terraform init && terraform apply -auto-approve -input=false
+      - name: Build the image
         run: packer build goldenimage.pkr.hcl
+      - name: Delete the vpc 
+        if: ${{ failure() }}
+        run: terraform destroy -auto-approve
+      - name: Delete the vpc 
+        run: terraform destroy -auto-approve
